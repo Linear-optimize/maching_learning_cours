@@ -19,10 +19,11 @@ model = Pipeline(
 
 model.fit(x, y)
 
-#保存模型
+# 保存模型
 joblib.dump(model, "model.pkl")
 
 # 模型到文件
+lr = model.named_steps["linear"]
 Path("linear_model.txt").write_text(
-    f"Coefficients: {model.coef_}\nIntercept: {model.intercept_}\n", encoding="utf-8"
+    f"Coefficients: {lr.coef_}\nIntercept: {lr.intercept_}\n", encoding="utf-8"
 )
